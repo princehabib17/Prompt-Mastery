@@ -12,6 +12,7 @@ container's `~/.claude/skills/`.
 - **lanshu-awesome-ai-video-kit** — AI video prompt-engineering toolkit (543 tested prompts, 15 models), including 7 sub-skills:
   - `kling-prompter`, `seedance-prompter`, `seedance-storyboard`, `seedance-debugger`,
     `happyhorse-prompter`, `model-selector`, `prompt-translator`
+- **scrollcraft** — builds premium scroll-driven interactive landing pages (scroll-scrubbed video, pinned sections, signature page grammar per brand)
 
 ## Usage
 
