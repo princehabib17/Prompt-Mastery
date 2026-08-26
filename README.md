@@ -13,6 +13,7 @@ container's `~/.claude/skills/`.
   - `kling-prompter`, `seedance-prompter`, `seedance-storyboard`, `seedance-debugger`,
     `happyhorse-prompter`, `model-selector`, `prompt-translator`
 - **scrollcraft** — builds premium scroll-driven interactive landing pages (scroll-scrubbed video, pinned sections, signature page grammar per brand)
+- **apple-design** — Apple Human Interface Guidelines-inspired design skill (from [emilkowalski/skills](https://github.com/emilkowalski/skills))
 
 ## Usage
 
