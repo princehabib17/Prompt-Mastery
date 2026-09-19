@@ -13,6 +13,9 @@ container's `~/.claude/skills/`.
   - `kling-prompter`, `seedance-prompter`, `seedance-storyboard`, `seedance-debugger`,
     `happyhorse-prompter`, `model-selector`, `prompt-translator`
 - **scrollcraft** — builds premium scroll-driven interactive landing pages (scroll-scrubbed video, pinned sections, signature page grammar per brand)
+- **emil-design-eng** — Emil Kowalski's design-engineering philosophy: UI polish, component design, animation decisions, the invisible details that make software feel right ([source](https://github.com/emilkowalski/skills))
+- **impeccable** — Paul Bakaus's design-fluency skill: 24 commands (`polish`, `audit`, `critique`, `animate`, `bolder`, `quieter`, etc.) plus curated anti-pattern detection ([source](https://github.com/pbakaus/impeccable))
+- **taste-skill** — anti-slop frontend skill for landing pages/portfolios/redesigns: reads the brief, infers the right design direction, avoids templated-looking output ([source](https://github.com/leonxlnx/taste-skill))
 
 ## Usage
 
@@ -42,6 +45,7 @@ you only need the tools that don't require a key.
 | **Firecrawl** | `.mcp.json` → `npx firecrawl-mcp` (stdio) | `FIRECRAWL_API_KEY` (scrape/search work keyless, rate-limited) |
 | **Perplexity** | `.mcp.json` → `npx @perplexity-ai/mcp-server` (stdio) | `PERPLEXITY_API_KEY` (required) |
 | **Composio** | `.mcp.json` → `https://rube.app/mcp` (http) | browser OAuth on first use, no key needed |
+| **Figma** | `.mcp.json` → `http://127.0.0.1:3845/mcp` (http, local) | Figma desktop app open with Dev Mode MCP Server enabled |
 | **Codex** | not wired up here — see note below | — |
 
 ### Playwright
@@ -80,6 +84,17 @@ No official Claude Code plugin exists yet. The `.mcp.json` entry points at
 app integrations (Gmail, Slack, GitHub, Notion, etc.). Authentication is an
 interactive OAuth flow per app the first time you use it — no API key to
 set up front.
+
+### Figma
+The `.mcp.json` entry points at Figma's local Dev Mode MCP server, which
+only responds while the Figma desktop app is open with **Preferences →
+Enable Dev Mode MCP Server** turned on — no separate install. If you'd
+rather use Figma's officially maintained plugin (adds design-to-code,
+code-to-design, and diagramming skills on top of the same server):
+
+```bash
+claude plugin install figma@claude-plugins-official
+```
 
 ### Codex
 OpenAI's Codex CLI removed its built-in `codex mcp-server` command
