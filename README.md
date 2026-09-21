@@ -46,7 +46,9 @@ you only need the tools that don't require a key.
 | **Perplexity** | `.mcp.json` → `npx @perplexity-ai/mcp-server` (stdio) | `PERPLEXITY_API_KEY` (required) |
 | **Composio** | `.mcp.json` → `https://rube.app/mcp` (http) | browser OAuth on first use, no key needed |
 | **Figma** | `.mcp.json` → `http://127.0.0.1:3845/mcp` (http, local) | Figma desktop app open with Dev Mode MCP Server enabled |
+| **Remotion** | `.mcp.json` → `npx @remotion/mcp` (stdio) | none |
 | **Codex** | not wired up here — see note below | — |
+| **Remotion WebMCP** | not wired up here — see note below | — |
 
 ### Playwright
 Official Anthropic-maintained plugin (bundles the same MCP server as the
@@ -95,6 +97,23 @@ code-to-design, and diagramming skills on top of the same server):
 ```bash
 claude plugin install figma@claude-plugins-official
 ```
+
+### Remotion
+The `.mcp.json` entry adds Remotion's official `@remotion/mcp` stdio server
+(bin: `remotion-mcp`). It's genuinely usable from Claude Code today, but its
+published package has no README and no documented tool list at the time of
+writing — inspect what it actually exposes with `/mcp` (or `claude mcp list`)
+after starting a session rather than assuming a specific tool set.
+
+**"Remotion WebMCP" is a different thing and is *not* wired up here.** It's
+a browser API (`navigator.modelContext`) that Remotion Studio exposes when
+you open it in a browser — see
+[remotion.dev/docs/ai/webmcp](https://www.remotion.dev/docs/ai/webmcp). It's
+consumed by an in-browser AI agent extension (as of this writing, that's
+ChatGPT Codex's browser integration, not Claude Code), so there's no
+`.mcp.json` entry that makes a terminal-based Claude Code session talk to
+it. If a Claude Code WebMCP client ships later, that page is the place to
+check for updated support.
 
 ### Codex
 OpenAI's Codex CLI removed its built-in `codex mcp-server` command
