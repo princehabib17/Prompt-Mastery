@@ -30,6 +30,23 @@ cp -r /tmp/prompt-mastery/skills/* ~/.claude/skills/
 Each skill is discoverable individually (top-level folders under `skills/`)
 so they load without extra nesting.
 
+## Plugins pre-registered for this repo
+
+[`.claude/settings.json`](.claude/settings.json) registers the
+[`typesafe-ai/skills`](https://github.com/typesafe-ai/skills) marketplace
+and marks its `typesafe` plugin (v0.5.7, skill-only, no MCP server —
+~207 tokens always-on) as enabled. Claude Code adds the marketplace
+automatically once you trust this folder; you still need to run the actual
+install yourself the first time:
+
+```bash
+claude plugin install typesafe@typesafe-ai
+```
+
+It's a reference skill for TypeSafe's System One API (question types,
+architectural patterns, best practices) — no auth needed to install, TypeSafe
+API usage itself needs their own credentials.
+
 ## External integrations (plugins & MCP servers)
 
 This repo ships a project-scoped [`.mcp.json`](.mcp.json) that wires up
