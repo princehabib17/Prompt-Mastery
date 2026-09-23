@@ -1,0 +1,450 @@
+<title>Case Study Reveal Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F4F6F2;
+  --surface:#FFFFFF;
+  --sunk:#E9EEE8;
+  --ink:#15201A;
+  --ink-2:#46544B;
+  --ink-3:#6E7B72;
+  --rule:#D5DDD6;
+  --accent:#0B6B4B;
+  --accent-soft:#DCEFE5;
+  --amber:#9A5B0C;
+  --amber-soft:#F6E7CF;
+  --slate:#3D5570;
+  --slate-soft:#E1E8F1;
+  --bad:#A3322A;
+  --bad-soft:#F6DEDB;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0F1512; --surface:#161E19; --sunk:#1C2620;
+    --ink:#E4EBE6; --ink-2:#B3C0B7; --ink-3:#8A988F; --rule:#2A362F;
+    --accent:#5FCB98; --accent-soft:#18372A;
+    --amber:#E3A94F; --amber-soft:#3A2B14;
+    --slate:#9DB6D4; --slate-soft:#1E2A38;
+    --bad:#EE8A80; --bad-soft:#3A1D1A;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0F1512; --surface:#161E19; --sunk:#1C2620;
+  --ink:#E4EBE6; --ink-2:#B3C0B7; --ink-3:#8A988F; --rule:#2A362F;
+  --accent:#5FCB98; --accent-soft:#18372A;
+  --amber:#E3A94F; --amber-soft:#3A2B14;
+  --slate:#9DB6D4; --slate-soft:#1E2A38;
+  --bad:#EE8A80; --bad-soft:#3A1D1A;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.62;padding-inline:20px;padding-block:0 72px}
+.wrap{max-width:760px;margin:0 auto}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;color:var(--ink)}
+p{margin:0}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+
+/* Masthead */
+header.mast{padding-block:40px 28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--rule)}
+header.mast .label b{color:var(--ink);font-weight:500}
+
+/* Lead */
+.lead{padding-block:44px 36px}
+.lead h1{font-size:clamp(30px,5.2vw,46px);line-height:1.08;font-weight:800;letter-spacing:-.02em}
+.lead h1 em{font-style:normal;color:var(--accent)}
+.lead .sub{margin-top:18px;color:var(--ink-2);font-size:18px;max-width:62ch}
+
+/* Scan box */
+.scan{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:22px 24px}
+.scan ol{margin:12px 0 0;padding-left:1.3em;display:grid;gap:8px}
+.scan li::marker{font-family:var(--mono);color:var(--accent);font-size:13px}
+.scan b{font-weight:600}
+
+/* Evidence tags */
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:4px;vertical-align:2px;white-space:nowrap}
+.t-research{background:var(--accent-soft);color:var(--accent)}
+.t-observed{background:var(--slate-soft);color:var(--slate)}
+.t-convention{background:var(--amber-soft);color:var(--amber)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:16px;font-size:14px;color:var(--ink-2)}
+.legend span{display:flex;gap:8px;align-items:center}
+
+/* Sections */
+section{padding-top:64px}
+section > h2{font-size:clamp(24px,3.4vw,30px);font-weight:700;letter-spacing:-.01em;line-height:1.15}
+section > .label{display:block;margin-bottom:10px}
+section > p.intro{margin-top:12px;color:var(--ink-2);max-width:64ch}
+
+/* Reveal stack diagram */
+.stack{margin-top:28px;display:grid;gap:6px}
+.layer{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;margin-inline:calc(var(--i) * 14px)}
+.layer .when{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);padding-top:3px}
+.layer .when small{display:block;color:var(--ink-3);text-transform:none;letter-spacing:0;font-size:12px;margin-top:2px}
+.layer h3{font-size:18px;font-weight:700}
+.layer p{color:var(--ink-2);font-size:15px;margin-top:4px}
+.layer:first-child{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.stack-note{margin-top:14px;font-size:14px;color:var(--ink-3)}
+@media (max-width:560px){
+  .layer{grid-template-columns:1fr;gap:6px;margin-inline:calc(var(--i) * 4px)}
+}
+
+/* Rules list */
+.rules{margin-top:26px;display:grid;gap:0;border-top:1px solid var(--rule)}
+.rule{padding-block:22px;border-bottom:1px solid var(--rule);display:grid;gap:8px}
+.rule h3{font-size:19px;font-weight:700;line-height:1.3}
+.rule p{color:var(--ink-2);max-width:66ch}
+.rule .ex{font-family:var(--mono);font-size:13.5px;background:var(--sunk);border-radius:6px;padding:10px 12px;color:var(--ink);overflow-x:auto;line-height:1.55}
+.rule .ex .no{color:var(--bad)}
+.rule .ex .yes{color:var(--accent)}
+.rule .src{font-size:13px;color:var(--ink-3)}
+
+/* Storetasker anatomy */
+.anatomy{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:20px}
+.card h3{font-size:17px;font-weight:700;margin-bottom:10px}
+.seq{list-style:none;margin:0;padding:0;display:grid;gap:6px;counter-reset:s}
+.seq li{counter-increment:s;display:grid;grid-template-columns:26px 1fr;gap:6px;font-size:15px}
+.seq li::before{content:counter(s);font-family:var(--mono);font-size:12px;color:var(--ink-3);padding-top:3px}
+.verdict{margin-top:12px;font-size:14px;color:var(--ink-2);border-top:1px dashed var(--rule);padding-top:10px}
+.verdict b{color:var(--ink)}
+.formula{margin-top:14px;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:18px 20px}
+.formula code{font-family:var(--mono);font-size:15px;color:var(--ink)}
+.formula code i{font-style:normal;color:var(--accent)}
+
+/* Template */
+.tpl{margin-top:26px;background:var(--surface);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.tpl-bar{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;padding:12px 18px;background:var(--sunk);border-bottom:1px solid var(--rule)}
+.tpl-body{padding:26px 24px;display:grid;gap:22px}
+.slot{display:grid;gap:6px}
+.slot .label{color:var(--accent)}
+.slot .fill{font-size:16px}
+.slot .fill.h{font-family:var(--display);font-size:clamp(20px,3vw,26px);font-weight:700;line-height:1.2}
+.ph{background:var(--amber-soft);color:var(--amber);border-radius:3px;padding:0 4px;font-family:var(--mono);font-size:.86em;white-space:normal}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.facts div{background:var(--surface);padding:10px 12px;display:grid;gap:2px}
+.facts div .label{font-size:11px;color:var(--ink-3)}
+.metric{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.metric .big{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,40px);font-variant-numeric:tabular-nums;color:var(--accent);line-height:1}
+.metric .ctx{font-size:14px;color:var(--ink-2)}
+.cap{border-left:2px solid var(--rule);padding-left:12px;font-size:14.5px;color:var(--ink-2)}
+
+/* Anti-patterns */
+.anti{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.anti div{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;display:grid;gap:6px}
+.anti h3{font-size:16px;font-weight:700;color:var(--bad)}
+.anti p{font-size:15px;color:var(--ink-2)}
+
+/* Skim test */
+.check{margin-top:22px;list-style:none;padding:0;display:grid;gap:8px}
+.check li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 14px}
+.check input{width:18px;height:18px;margin-top:3px;accent-color:var(--accent)}
+.check label{cursor:pointer}
+.progress{margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--ink-3)}
+
+/* Sources */
+.sources{margin-top:18px;padding-left:1.2em;display:grid;gap:8px;font-size:14.5px;color:var(--ink-2)}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3)}
+@media (prefers-reduced-motion: no-preference){
+  .layer{transition:transform .2s ease}
+  .layer:hover{transform:translateX(3px)}
+}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <span class="label"><b>Prince Designs</b> · for Storetasker</span>
+  <span class="label">Research brief · Sept 2026</span>
+</header>
+
+<div class="lead">
+  <h1>Great case studies put <em>the result in the first sentence</em>, then let each layer below answer the question the layer above raised.</h1>
+  <p class="sub">Reviewers scan before they read. The best case studies are built so a 10-second glance, a 1-minute skim and a full read all tell the same story, just at different depths.</p>
+</div>
+
+<div class="scan" aria-label="Summary">
+  <span class="label">If you only read this box</span>
+  <ol>
+    <li><b>Lead with the outcome.</b> Put the answer first and the backstory after it (the inverted pyramid).</li>
+    <li><b>Write subheads that make sense read alone.</b> Someone reading only the headings should still get the whole story.</li>
+    <li><b>Captions make the argument.</b> Each image gets one sentence that says what changed and why it matters.</li>
+    <li><b>Every number needs a before, an after and a timeframe.</b> "13th → 4th in 6 weeks" beats "big ranking gains."</li>
+    <li><b>Show what you didn't ship.</b> Hiring managers say rejected options show judgment.</li>
+  </ol>
+  <div class="legend">
+    <span><i class="tag t-research">Research</i> backed by published user research</span>
+    <span><i class="tag t-observed">Observed</i> seen in real case studies</span>
+    <span><i class="tag t-convention">Convention</i> common practice, not tested</span>
+  </div>
+</div>
+
+<!-- 1. The reveal stack -->
+<section id="stack">
+  <span class="label">The reveal order</span>
+  <h2>Six layers, widest at the top</h2>
+  <p class="intro">Each layer is a place where the reader can stop and still leave with the right idea. Readers move down only if the layer above earned it. The reader-intent labels are a working model, not measured reading times.</p>
+
+  <div class="stack">
+    <div class="layer" style="--i:0">
+      <div class="when">Glance<small>listing card</small></div>
+      <div><h3>Card title = brand + person + scope</h3><p>Before anyone opens the page, the listing card already says who, what and (ideally) the result. Storetasker's customers page does this in one line: "How Cubitts met Roberto for cart and collection page upgrades."</p></div>
+    </div>
+    <div class="layer" style="--i:1">
+      <div class="when">Glance<small>top of page</small></div>
+      <div><h3>TL;DR + one headline number</h3><p>Two or three sentences: the problem, what you did, what changed. Then one number with its baseline and timeframe. If a reader stops here, they still have the full story.</p></div>
+    </div>
+    <div class="layer" style="--i:2">
+      <div class="when">Skim<small>fact strip</small></div>
+      <div><h3>Role, team, timeline, scope</h3><p>A short strip of facts. NN/g's survey of hiring managers names "your role, any constraints, project timeline" as things they explicitly want to see.</p></div>
+    </div>
+    <div class="layer" style="--i:3">
+      <div class="when">Skim<small>headings + visuals</small></div>
+      <div><h3>Headings and captions that tell the story alone</h3><p>Headings that make a claim ("The size chart was the real drop-off") plus before/after images with captions. Reading only these should retell the case study.</p></div>
+    </div>
+    <div class="layer" style="--i:4">
+      <div class="when">Read<small>body</small></div>
+      <div><h3>Decisions, tradeoffs, rejected options</h3><p>Why this approach and not the others. One idea per paragraph, and each paragraph starts with its point.</p></div>
+    </div>
+    <div class="layer" style="--i:5">
+      <div class="when">Study<small>appendix</small></div>
+      <div><h3>Method and proof</h3><p>Test length, sample size, which metric, and what else changed in that window. Collapsed or at the end, for the reader who wants to check your work.</p></div>
+    </div>
+  </div>
+  <p class="stack-note">The narrowing shape is intentional: less text and more commitment as you go down. Nothing important should live only in the bottom layers.</p>
+</section>
+
+<!-- 2. Rules -->
+<section id="rules">
+  <span class="label">How to reveal information</span>
+  <h2>Nine rules from research and real examples</h2>
+  <p class="intro">These rules cover structure only: order, labels, density and proof. They say nothing about persuasive copy.</p>
+
+  <div class="rules">
+    <div class="rule">
+      <h3>1 · Start with the conclusion <i class="tag t-research">Research</i></h3>
+      <p>In NN/g's reading study, 79% of test users scanned any new page and only 16% read word by word. Their recommendation is the inverted pyramid, "starting with the conclusion." For a case study, the result and the change go at the top, and the chronology goes below.</p>
+      <div class="ex"><span class="no">✗</span> "In March, the team reached out about their store…"<br><span class="yes">✓</span> "Rebuilt the PDP around fit data; add-to-cart rate rose from X% to Y% over 8 weeks."</div>
+      <p class="src">Source: NN/g, <i>How Users Read on the Web</i></p>
+    </div>
+
+    <div class="rule">
+      <h3>2 · Write headings that say something <i class="tag t-research">Research</i></h3>
+      <p>NN/g asks for "meaningful sub-headings (not 'clever' ones)." Generic labels like "Challenge / Solution / Results" help people find their way around, but they carry no information. Keep the label small and make the heading itself a claim.</p>
+      <div class="ex"><span class="no">✗</span> The Challenge<br><span class="yes">✓</span> CHALLENGE — Mobile shoppers never reached the size chart</div>
+      <p class="src">Source: NN/g, <i>How Users Read on the Web</i></p>
+    </div>
+
+    <div class="rule">
+      <h3>3 · One idea per paragraph, point first <i class="tag t-research">Research</i></h3>
+      <p>Readers "will skip over any additional ideas if they are not caught by the first few words in the paragraph." Open each paragraph with its point, and use bulleted lists for work items.</p>
+      <p class="src">Source: NN/g, <i>How Users Read on the Web</i></p>
+    </div>
+
+    <div class="rule">
+      <h3>4 · Numbers need a before, an after and a timeframe <i class="tag t-observed">Observed</i></h3>
+      <p>Storetasker's strongest story (First Day, SEO) lists results as <code>Calming gummies: 96th → 5th</code>, with a start, an end and "within weeks." Their Boll &amp; Branch story ends with results like "predictable technical excellence," which can't be checked. CRO write-ups also recommend stating the page tested, test length and sample size.</p>
+      <div class="ex"><span class="no">✗</span> Conversion up 38%<br><span class="yes">✓</span> PDP conversion (mobile): 1.9% → 2.6% · 90 days · vs. same period last year</div>
+      <p class="src">Sources: Storetasker blog (First Day; Boll &amp; Branch); Build Grow Scale on CRO case studies</p>
+    </div>
+
+    <div class="rule">
+      <h3>5 · Captions carry the argument <i class="tag t-convention">Convention</i></h3>
+      <p>NN/g's portfolio template lists "images with captions" as a core part. Skimmers look at images before body text, so a caption should state the change ("Moved size guide above the fold; fit questions to support dropped"), not just name the image ("Homepage v2").</p>
+      <p class="src">Source: NN/g, <i>5 Steps to Creating a UX-Design Portfolio</i></p>
+    </div>
+
+    <div class="rule">
+      <h3>6 · Show what didn't make it <i class="tag t-research">Research</i></h3>
+      <p>From NN/g's survey of 204 hiring managers: "I'm curious to know what isn't in the design and why, just as much as I'd like to know why elements made it in." Include one rejected direction per case study, with the reason you dropped it.</p>
+      <p class="src">Source: NN/g, <i>5 Steps to Creating a UX-Design Portfolio</i></p>
+    </div>
+
+    <div class="rule">
+      <h3>7 · Make your role obvious <i class="tag t-research">Research</i></h3>
+      <p>NN/g lists "your specific role in the project and how you collaborated with others" as a required part. On a marketplace like Storetasker this matters even more, because the client, the expert and sometimes an agency all share the credit.</p>
+      <div class="ex">Role: Sole designer · Worked with: in-house dev + founder · Handoff: Figma → Shopify theme sections</div>
+    </div>
+
+    <div class="rule">
+      <h3>8 · Name the tension before the fix <i class="tag t-observed">Observed</i></h3>
+      <p>Storetasker's newer stories have a "Core Tension" section with bold lead-ins: <b>Why full-time hiring didn't fit</b>, <b>Why junior developers wouldn't work</b>, <b>What was at risk</b>. Each option that was ruled out gets one bolded sentence, so a skimmer can read just the bold text.</p>
+      <p class="src">Source: Storetasker blog (Boll &amp; Branch)</p>
+    </div>
+
+    <div class="rule">
+      <h3>9 · Use the same layout every time <i class="tag t-convention">Convention</i></h3>
+      <p>NN/g recommends "a basic template that you'll follow so that all of your projects look cohesive." When every case study has the same layout, returning readers know where the number, the role and the visuals will be, and they can compare projects at a glance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Storetasker anatomy -->
+<section id="storetasker">
+  <span class="label">What Storetasker already does</span>
+  <h2>How their own stories reveal information</h2>
+  <p class="intro">This is from reading Storetasker's customers page and two of their 2026 customer stories. Matching their order makes your work easy to repost and easy for their team to compare.</p>
+
+  <div class="anatomy">
+    <div class="card">
+      <h3>Customer story page</h3>
+      <ol class="seq">
+        <li>Title: "A [role] for [Brand]"</li>
+        <li><b>TL;DR</b>: bolded label, one paragraph</li>
+        <li>About the Client</li>
+        <li>The Core Tension, with bold lead-ins</li>
+        <li>The Solution: the match</li>
+        <li>The Work: bullets with hours and dollar ranges</li>
+        <li>Results &amp; Impact</li>
+        <li>Why Storetasker (the pitch; skip this in yours)</li>
+      </ol>
+      <p class="verdict"><b>Strong:</b> TL;DR first; work bullets with concrete scope ("80–120 hours monthly"). <b>Weak:</b> results are sometimes all qualitative.</p>
+    </div>
+    <div class="card">
+      <h3>Customers index page</h3>
+      <ol class="seq">
+        <li>Grouped by industry (Fashion, Home, Food, Beauty…)</li>
+        <li>One sentence of industry context</li>
+        <li>Four one-line cards per industry</li>
+        <li>Each card: brand + expert + scope, or a short quote</li>
+      </ol>
+      <p class="verdict"><b>Strong:</b> each card is a complete mini case study you can take in at a glance. <b>Weak:</b> no outcomes on the cards.</p>
+    </div>
+  </div>
+
+  <div class="formula">
+    <span class="label">Card formula to borrow, plus the missing piece</span>
+    <p style="margin-top:8px"><code>How <i>[Brand]</i> + Prince rebuilt <i>[scope]</i> → <i>[metric]</i> <i>[before → after]</i> in <i>[time]</i></code></p>
+  </div>
+</section>
+
+<!-- 4. Template -->
+<section id="template">
+  <span class="label">Template</span>
+  <h2>A Prince Designs case study, layer by layer</h2>
+  <p class="intro">Amber brackets are placeholders. Fill them with your real project data, and leave a slot out rather than invent a number for it.</p>
+
+  <div class="tpl">
+    <div class="tpl-bar"><span class="label">princedesigns.webflow.io / work / [brand]</span><span class="label">Layout</span></div>
+    <div class="tpl-body">
+      <div class="slot">
+        <span class="label">Title · claim, not label</span>
+        <p class="fill h">[Brand]'s <span class="ph">[page/flow]</span> redesign: <span class="ph">[metric]</span> from <span class="ph">[before]</span> to <span class="ph">[after]</span></p>
+      </div>
+      <div class="slot">
+        <span class="label">TL;DR · 2–3 sentences</span>
+        <p class="fill"><span class="ph">[Brand]</span>, a <span class="ph">[category]</span> brand on Shopify, was losing <span class="ph">[who]</span> at <span class="ph">[where]</span>. I <span class="ph">[what you did]</span>. Within <span class="ph">[time]</span>, <span class="ph">[metric]</span> moved from <span class="ph">[X]</span> to <span class="ph">[Y]</span>.</p>
+      </div>
+      <div class="slot">
+        <span class="label">Headline number</span>
+        <div class="metric"><span class="big">[X] → [Y]</span><span class="ctx"><span class="ph">[metric name]</span> · <span class="ph">[timeframe]</span> · compared with <span class="ph">[baseline period]</span></span></div>
+      </div>
+      <div class="slot">
+        <span class="label">Fact strip</span>
+        <div class="facts">
+          <div><span class="label">Role</span><span class="ph">[e.g. Lead designer]</span></div>
+          <div><span class="label">Team</span><span class="ph">[who you worked with]</span></div>
+          <div><span class="label">Timeline</span><span class="ph">[weeks]</span></div>
+          <div><span class="label">Scope</span><span class="ph">[pages / sections]</span></div>
+          <div><span class="label">Stack</span><span class="ph">[Shopify theme, apps]</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <span class="label">Tension · bold lead-ins</span>
+        <p class="fill"><b>What was breaking:</b> <span class="ph">[one sentence]</span><br><b>Why the obvious fix wouldn't work:</b> <span class="ph">[one sentence]</span><br><b>What was at risk:</b> <span class="ph">[one sentence]</span></p>
+      </div>
+      <div class="slot">
+        <span class="label">Before / after + caption</span>
+        <p class="cap"><span class="ph">[Image pair]</span> Caption states the change and the reason: "Moved <span class="ph">[element]</span> above the fold because <span class="ph">[evidence]</span>."</p>
+      </div>
+      <div class="slot">
+        <span class="label">Decisions · including one you rejected</span>
+        <p class="fill">Heading as a claim → point-first paragraph → one rejected option with the reason.</p>
+      </div>
+      <div class="slot">
+        <span class="label">Method · collapsed</span>
+        <p class="fill">Metric source (Shopify Analytics / GA4), test length, sample size, and anything else that changed in the same window.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Anti-patterns -->
+<section id="avoid">
+  <span class="label">Reveal mistakes</span>
+  <h2>Six ways case studies hide their own point</h2>
+  <div class="anti">
+    <div><h3>Result at the bottom</h3><p>Most readers leave before they scroll that far. Whatever you most want remembered has to be in the top layer.</p></div>
+    <div><h3>Process diary</h3><p>"Week 1… Week 2…" shows effort, not decisions. Organize by decision instead of by date.</p></div>
+    <div><h3>Number without a baseline</h3><p>"+38%" of what, compared with what, and over how long? Without those, a reader can't check the claim.</p></div>
+    <div><h3>Uncaptioned screenshots</h3><p>A skimmer sees the image but can't tell what changed or why it matters.</p></div>
+    <div><h3>Only the final screens</h3><p>NN/g: "the final screenshots only tell part of the story." Show one piece of process that changed the direction.</p></div>
+    <div><h3>Everything given equal weight</h3><p>If every block looks the same, nothing stands out. Emphasize the headline number and the key before/after, and keep the rest quiet.</p></div>
+  </div>
+</section>
+
+<!-- 6. Skim test -->
+<section id="test">
+  <span class="label">Before you publish</span>
+  <h2>The skim test</h2>
+  <p class="intro">Hide the body text and read only the title, TL;DR, headings, captions and numbers. If the story still holds up, the case study is ready.</p>
+  <ul class="check" id="checklist">
+    <li><input type="checkbox" id="c1"><label for="c1">The title or TL;DR contains the outcome, not just the project name.</label></li>
+    <li><input type="checkbox" id="c2"><label for="c2">The headline number has a before, an after and a timeframe.</label></li>
+    <li><input type="checkbox" id="c3"><label for="c3">My role and who I worked with are visible without scrolling.</label></li>
+    <li><input type="checkbox" id="c4"><label for="c4">Reading only the headings retells the story.</label></li>
+    <li><input type="checkbox" id="c5"><label for="c5">Every image has a caption that states a change or a reason.</label></li>
+    <li><input type="checkbox" id="c6"><label for="c6">At least one rejected option is shown, with the reason.</label></li>
+    <li><input type="checkbox" id="c7"><label for="c7">Method details are available but out of the way.</label></li>
+    <li><input type="checkbox" id="c8"><label for="c8">It uses the same layout as my other case studies.</label></li>
+  </ul>
+  <p class="progress" id="progress" aria-live="polite">0 of 8 checked</p>
+</section>
+
+<!-- Sources -->
+<section id="sources">
+  <span class="label">Sources</span>
+  <h2>Where this came from</h2>
+  <ol class="sources">
+    <li><a href="https://www.nngroup.com/articles/how-users-read-on-the-web/">NN/g: How Users Read on the Web</a>: 79% scan / 16% read word by word; the scannable-text techniques.</li>
+    <li><a href="https://www.nngroup.com/articles/ux-design-portfolios/">NN/g: 5 Steps to Creating a UX-Design Portfolio</a>: survey of 204 hiring managers; the 7 parts of a case study; captions; consistent template.</li>
+    <li><a href="https://www.nngroup.com/articles/ux-researcher-portfolio/">NN/g: Portfolios for UX Researchers</a>: summarize one or two key findings; metrics like cart abandonment and conversions.</li>
+    <li><a href="https://www.storetasker.com/customers">Storetasker: Customers page</a>: the one-line card formula, grouped by industry.</li>
+    <li><a href="https://resources.storetasker.com/blog/a-fractional-shopify-development-expert-for-boll-branch">Storetasker: Boll &amp; Branch story</a>: TL;DR → Core Tension → Work → Results.</li>
+    <li><a href="https://resources.storetasker.com/blog/an-seo-expert-for-first-day">Storetasker: First Day SEO story</a>: before → after ranking format.</li>
+    <li><a href="https://stripe.com/customers/figma">Stripe: Figma customer story</a>: summary, then a facts sidebar (products, location, customer type), then Challenge / Solution / Results.</li>
+    <li><a href="https://buildgrowscale.com/how-to-choose-cro-agency-shopify-2026">Build Grow Scale: Choosing a Shopify CRO agency</a>: state the page tested, test duration, sample size, hypothesis.</li>
+  </ol>
+</section>
+
+<footer>Compiled September 2026 for Prince Designs. The research tags mark which rules rest on published studies and which are common practice.</footer>
+</div>
+
+<script>
+(function(){
+  var KEY='reveal-blueprint-checks';
+  var boxes=[].slice.call(document.querySelectorAll('#checklist input'));
+  var out=document.getElementById('progress');
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){saved={};}
+  function update(){
+    var n=boxes.filter(function(b){return b.checked}).length;
+    out.textContent=n+' of '+boxes.length+' checked'+(n===boxes.length?'. Ready to publish.':'');
+  }
+  boxes.forEach(function(b){
+    if(saved[b.id])b.checked=true;
+    b.addEventListener('change',function(){
+      saved[b.id]=b.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}
+      update();
+    });
+  });
+  update();
+})();
+</script>
